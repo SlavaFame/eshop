@@ -5,6 +5,8 @@ import ContactsPage from '@/pages/ContactPage';
 import DeliveryPage from '@/pages/DeliveryPage';
 import PaymentPage from '@/pages/PaymentPage';
 
+import CatalogIdPage from '@/pages/CatalogIdPage';
+
 const routes = [
     {
         path: '/',
@@ -18,7 +20,7 @@ const routes = [
     },
     {
         path: '/catalog/:id',
-        //component: CatalogIdPage
+        component: CatalogIdPage
     },
     {
         path: '/about',

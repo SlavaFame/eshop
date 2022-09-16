@@ -28,25 +28,28 @@ export default {
     props: {
         picture: {
             type: Object,
-            required: true
+            required: true,
         }
     },
+
     methods: {
         addToCart(e){
-            localStorage.countCart = this.countCart;
-
             if (e.target.innerHTML != "В корзине"){
                 e.target.classList.toggle('btn-addToCart');
                 e.target.innerHTML = 'В корзине';
-                //alert(localStorage.countCart);
-                localStorage.countCart++;
+
+                this.$emit('add', this.props.picture);
+                this.props.picture = {
+                    title:'',
+                    price:''
+                }
+                
                 return;
             }
             e.target.classList.remove('btn-addToCart');
             e.target.innerHTML = 'Купить';
-            localStorage.countCart--;
         }
-    },
+    }
 }
 </script>
 

@@ -1,11 +1,29 @@
 <template>
-    <input class="input" type="text" placeholder="Поиск по названию картины">
+    <input 
+        class="input" 
+        type="text"
+        v-model="searchValue"
+        :placeholder="placeholder"
+    >
+    <my-button 
+        @click="searchPictures"
+        >
+        Найти
+    </my-button>
 </template>
 
 <script>
-    export default {
-        name:'my-input'
+
+export default {
+    name:'my-input',
+    props:{},
+    data(){
+        return {
+            placeholder:'Поиск по названию картины',
+        }
     }
+}
+
 </script>
 
 <style lang="scss" scoped>

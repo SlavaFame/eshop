@@ -5,13 +5,13 @@
                 <img @click="$router.push('/')" src="@/assets/img/logo.svg" class="logo">
                 <my-link @click="$router.push('/catalog')">Каталог</my-link>
                 <my-link @click="$router.push('/delivery')">Доставка</my-link>
-                <my-link @click="$router.push('/payment')" @create="addToCart">Оплата {{countCart}}</my-link>
+                <my-link @click="$router.push('/payment')">Оплата</my-link>
                 <my-link @click="$router.push('/contacts')">Контакты</my-link>
                 <my-link @click="$router.push('/about')">О галерее</my-link>
             </div>
             <div class="search">
-                <my-input v-model="searchQuery"></my-input>
-                <my-button>Найти</my-button>
+                <my-input
+                    v-model="searchQuery" />
             </div>
         </div>
     </header>

@@ -10,8 +10,8 @@
                 <my-link @click="$router.push('/about')">О галерее</my-link>
             </div>
             <address>
-                <a class="phone" href="tel:+7 (495) 555-55-55">+7 (495) 555-55-55</a>
-                <div class="location">г. Москва, ул. Расплетина, 24</div>
+                <a class="phone" :href="`tel:${location.phone}`">{{location.phone}}</a>
+                <div class="location">{{location.address}}</div>
             </address>
         </div>
     </footer>
@@ -19,9 +19,16 @@
 
 <script>
     export default {
+        data(){
+            return {
+                location:{
+                    phone: '+7 (495) 555-55-55',
+                    address: 'г. Москва, ул. Расплетина, 24'
+                }
+            }
+        }
     }
 </script>
-
 
 <style lang="scss" scoped>
 

@@ -17,6 +17,7 @@
     width: 11.2rem;
     padding: 1.3rem;
     background-color: #382E2B;
+    border: 2px solid #382E2B;
     color: white;
     cursor: pointer;
     text-align: center;
