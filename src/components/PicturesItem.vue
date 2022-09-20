@@ -12,15 +12,28 @@
                     <div class="card__price-old" v-if="picture.oldPrice != ''">{{picture.oldPrice}}</div>
                     <div class="card__price-new">{{picture.price}}</div>
                 </div>
-                <my-button
-                    @click="addToCart">
+                <input type="checkbox"
+                    class="custom-checkbox"
+                    :id="picture.id"
+                    v-model="statusInCart"
+                    @click="addToCart"
+                >
+                <label class="custom-label"
+                    :for="picture.id"
+                    v-if="statusInCart === true">
+                    В корзине
+                </label>
+                <label class="custom-label"
+                    :for="picture.id" 
+                    v-else>
                     Купить
-                </my-button>
+                </label>
             </div>
             <div class="card__payment" v-else>
                 <div class="card__soldPicture">Продана на аукционе</div>
             </div>
         </div>
+        
 </template>
 
 <script>
@@ -28,32 +41,93 @@ export default {
     props: {
         picture: {
             type: Object,
-            required: true,
+            required: true
+        }
+    },
+
+    data(){
+        return{
+            quantity: 0,
+            statusInCart: ''
+        }
+    },
+
+    mounted(){
+        if(localStorage.status){
+            this.status = localStorage.status;
+        }
+        if(localStorage.quantity){
+            this.quantity = localStorage.quantity;
         }
     },
 
     methods: {
-        addToCart(e){
-            if (e.target.innerHTML != "В корзине"){
-                e.target.classList.toggle('btn-addToCart');
-                e.target.innerHTML = 'В корзине';
-
-                this.$emit('add', this.props.picture);
-                this.props.picture = {
-                    title:'',
-                    price:''
-                }
-                
+        addToCart(){
+            this.status = 'В корзине';
+            this.quantity++;
+            if(this.status == 'В корзине'){
+                localStorage.status = this.status;
+                localStorage.quantity = this.quantity;
                 return;
             }
-            e.target.classList.remove('btn-addToCart');
-            e.target.innerHTML = 'Купить';
+
+
+            /*if (e.target.innerHTML !== "В корзине"){
+                e.target.classList.toggle("btn-addToCart");
+                localStorage.status = e.target.innerHTML;
+                localStorage.quantity = this.quantity;
+                e.target.innerHTML = localStorage.quantity;
+                return;
+            }
+            e.target.classList.remove("btn-addToCart");
+            e.target.innerHTML = "Купить";*/
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+
+.custom-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    &+label{
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+        font-size: 1.4rem;
+        &:before {
+            content: '';
+            display: inline-block;
+            width: 1.6rem;
+            height: 1.3rem;
+            flex-shrink: 0;
+            flex-grow: 0;
+            margin-right: 0.72em;
+        }
+    }
+    &:checked {
+        &+label{
+            &:before{
+                background: url("@/assets/img/in_cart.svg") center center / contain no-repeat;
+            }
+        }
+    }
+}
+
+.custom-label {
+    font-size: 1.4rem;
+    height: 4.8rem;
+    width: 11.2rem;
+    padding: 1.3rem 0.3rem;
+    background-color: #382E2B;
+    border: 2px solid #382E2B;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+}
+
 .card {
     display:flex;
     flex-direction:column;

@@ -37,7 +37,7 @@
     }
 }
 
-.btn-addToCart {
+/*.btn-addToCart {
     text-align: right;
     padding:0 0.5rem 0 0;
     position: relative;
@@ -51,5 +51,5 @@
         position: absolute;
         left: 0.72em;
     }
-}
+}*/
 </style>
