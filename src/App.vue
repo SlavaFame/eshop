@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 @font-face {
   font-family: 'Merriweather-Regular';
   font-style: normal;
@@ -99,8 +99,17 @@ h6 {
   padding-left: 1.5rem;
   margin-right: auto;
   margin-left: auto;
+  position: relative;
+  h1 {
+    margin-top: 4.5rem;
+  }
 }
+
 .logo {
-  cursor:pointer;
+  cursor: pointer;
+}
+
+.app {
+  border-top: 1px solid #E1E1E1;
 }
 </style>

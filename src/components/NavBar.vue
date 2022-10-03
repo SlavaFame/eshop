@@ -9,24 +9,19 @@
                 <my-link @click="$router.push('/contacts')">Контакты</my-link>
                 <my-link @click="$router.push('/about')">О галерее</my-link>
             </div>
-            <div class="search">
-                <my-input
-                    v-model="searchQuery" />
-            </div>
         </div>
     </header>
 </template>
 
 <script>
     export default {
+        
     }
 </script>
 
 <style lang="scss" scoped>
     header {
         padding: 2.4rem 0;
-        border-bottom: 1px solid #E1E1E1;
-        margin-bottom: 4.5rem;
     }
     .header {
         display: flex;

@@ -15,12 +15,13 @@
                 <input type="checkbox"
                     class="custom-checkbox"
                     :id="picture.id"
-                    v-model="statusInCart"
+                    :value="picture.id"
+                    v-model="status"
                     @click="addToCart"
                 >
                 <label class="custom-label"
                     :for="picture.id"
-                    v-if="statusInCart === true">
+                    v-if="status === true">
                     В корзине
                 </label>
                 <label class="custom-label"
@@ -48,7 +49,7 @@ export default {
     data(){
         return{
             quantity: 0,
-            statusInCart: ''
+            status: ''
         }
     },
 
@@ -59,18 +60,13 @@ export default {
         if(localStorage.quantity){
             this.quantity = localStorage.quantity;
         }
+
     },
 
     methods: {
         addToCart(){
-            this.status = 'В корзине';
-            this.quantity++;
-            if(this.status == 'В корзине'){
-                localStorage.status = this.status;
-                localStorage.quantity = this.quantity;
-                return;
-            }
-
+            localStorage.status = this.status;
+            localStorage.quantity = this.quantity;
 
             /*if (e.target.innerHTML !== "В корзине"){
                 e.target.classList.toggle("btn-addToCart");

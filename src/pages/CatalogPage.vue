@@ -1,10 +1,7 @@
 <template>
     <div class="container">
         <h1>Картины эпохи Возрождения</h1>
-        <pictures-list 
-            :pictures="pictures"
-            @add="addToCart"
-            />
+        <pictures-list :pictures="pictures" />
     </div>
 </template>
 
@@ -23,18 +20,7 @@
                     { id:3, sold:false, title:'«Сотворение Адама»', author:'Микеланджело', oldPrice:'6 000 000 $', price:'5 000 000 $', image:require('@/assets/img/pic3.jpg') },
                     { id:4, sold:true, title:'«Урок анатомии»', author:'Рембрандт', oldPrice:'', price:'', image:require('@/assets/img/pic4.jpg') },
                 ],
-                count: 0,
-                searchQuery:'',
-            }
-        },
-        methods: {
-            addToCart(picture){
-                console.log(picture);
-            }
-        },
-        computed: {
-            searchPictures(){
-                return this.picture.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+                count: 0
             }
         }
     }
