@@ -1,18 +1,24 @@
 <template>
-    <input 
-        class="input"
-        type="text"
-        v-model="search"
-        :placeholder="placeholder"
-    >
-    <my-button>
-        Найти
-    </my-button>
+    <div class="search">
+        <input 
+            class="input"
+            type="text"
+            :value="modelValue"
+            @input="$emit('update:modelValue', $event.target.value)"
+            :placeholder="placeholder"
+        >
+        <my-button>
+            Найти
+        </my-button>
+    </div>
 </template>
 
 <script>
 export default {
     name:'my-input',
+    props: {
+        modelValue: String
+    },
     data(){
         return {
             placeholder:'Поиск по названию картины',

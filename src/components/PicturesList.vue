@@ -1,7 +1,5 @@
 <template>
-    <!-- <input v-model="search"/>-->
-    <my-input
-        v-model="search" />
+    <my-input v-model="search" />
     <div class="cardList" v-if="pictures.length > 0">
     <transition-group name="card-list">
         <pictures-item 
@@ -48,25 +46,25 @@ export default {
 
 .search {
     position:absolute; 
-    top:0; 
-    right:0;
+    top:-13rem; 
+    right:1.5rem;
 }
 
 .input {
-        height: 4.8rem;
-        width:29.4rem;
-        font-size: 1.4rem;
-        padding: 1.3rem 1.6rem;
-        color: #343030;
-        outline:none;
-        border: 1px solid #E1E1E1;
-        &:focus {
-            border: 1px solid #B5B5B5;
-        }
-        &::placeholder {
-            color: #9F9F9F;
-        }
+    height: 4.8rem;
+    width:29.4rem;
+    font-size: 1.4rem;
+    padding: 1.3rem 1.6rem;
+    color: #343030;
+    outline:none;
+    border: 1px solid #E1E1E1;
+    &:focus {
+        border: 1px solid #B5B5B5;
     }
+    &::placeholder {
+        color: #9F9F9F;
+    }
+}
 
 .cardList {
     display:flex;

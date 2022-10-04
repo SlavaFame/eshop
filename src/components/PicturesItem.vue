@@ -28,6 +28,13 @@
                     :for="picture.id" 
                     v-else>
                     Купить
+                    <!--
+                    <div class="spinner-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>-->
                 </label>
             </div>
             <div class="card__payment" v-else>
@@ -60,23 +67,17 @@ export default {
         if(localStorage.quantity){
             this.quantity = localStorage.quantity;
         }
-
     },
 
     methods: {
-        addToCart(){
+        addToCart(target){
             localStorage.status = this.status;
             localStorage.quantity = this.quantity;
 
-            /*if (e.target.innerHTML !== "В корзине"){
-                e.target.classList.toggle("btn-addToCart");
-                localStorage.status = e.target.innerHTML;
-                localStorage.quantity = this.quantity;
-                e.target.innerHTML = localStorage.quantity;
+            if(this.status !== true){
+                target.innerHTML = "Загрузка...";
                 return;
             }
-            e.target.classList.remove("btn-addToCart");
-            e.target.innerHTML = "Купить";*/
         }
     }
 }
@@ -189,11 +190,11 @@ export default {
             animation: spinner-ellipsis2 0.6s infinite;
         }
         &:nth-child(3) {
-            left: 30px;
+            left: 23px;
             animation: spinner-ellipsis2 0.6s infinite;
         }
         &:nth-child(4) {
-            left: 56px;
+            left: 50px;
             animation: spinner-ellipsis3 0.6s infinite;
         }
     }
